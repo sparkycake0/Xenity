@@ -65,15 +65,17 @@ export default function ChatPage() {
         <h1 className="p-4 text-violet-400">Socialize - Live Chat</h1>
       </div>
       <div
-        className={`w-screen overflow-y-auto break-all h-full text-right transition-all duration-1000 delay-500 ${domLoad ? "opacity-100" : "opacity-0"} p-4 flex flex-col-reverse`}
+        className={`w-screen overflow-y-auto break-all h-full text-right transition-all duration-1000 delay-500 ${domLoad ? "opacity-100" : "opacity-0"} p-2 mb-4 flex flex-col-reverse`}
         ref={messagesRef}
       >
         {mssgs.map((message, index) => (
           <div
             key={`${message.id}-${index}`}
-            className={`${message.id === auth?.currentUser?.uid ? "self-end bg-neutral-700" : " self-start flex-row-reverse bg-neutral-800"} flex mt-3 self-start p-1 break-all rounded-md max-w-96 lg:max-w-screen-md h-max items-center justify-center text-center`}
+            className={`${message.id === auth?.currentUser?.uid ? "self-end bg-neutral-700" : " self-start flex-row-reverse bg-neutral-800"} flex mt-3 self-start max-w-80 lg:max-w-screen-lg lg:w-max p-1 break-all rounded-md h-max items-center justify-center text-justify`}
           >
-            <p className="m-2 break-all w-max text-wrap">{message.text}</p>
+            <p className="m-2 break-all w-max text-wrap break-words">
+              {message.text}
+            </p>
             <img
               src={message.profilePic}
               alt=""
