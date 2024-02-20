@@ -10,11 +10,12 @@ export default function Home() {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       setUser(user?.displayName ?? (user as any).reloadUserInfo.screenName);
+      if (user) {
+        console.log("Welcome");
+      } else {
+        router.push("/account/register");
+      }
     });
-    if (auth?.currentUser) {
-    } else {
-      router.push("/account/register");
-    }
   }, []);
   return (
     <nav className="p-12 flex-grow flex items-center flex-col">
