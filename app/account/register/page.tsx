@@ -41,7 +41,7 @@ export default function RegisterPage() {
     }
   };
   return (
-    <div className="font-bold absolute w-screen p-6 h-screen bg-neutral-900 top-0 left-0 right-0 bottom-0 text-center">
+    <div className="font-bold z-50 absolute w-screen p-6 h-screen bg-neutral-900 top-0 left-0 right-0 bottom-0 text-center">
       <div className="rounded-lg gap-8 p-6 w-full h-full bg-neutral-800 text-violet-500 flex justify-around items-center flex-col">
         <div className="text-3xl lg:text-5xl">
           <h1>Start your chatting journey here!</h1> <br />

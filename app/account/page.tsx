@@ -38,11 +38,11 @@ export default function Home() {
         <h1>Welcome {accountData.displayName}</h1>
       </div>
       <div className="items-center w-full h-full p-12 flex flex-col">
-        <div className="bg-violet-900 p-1 rounded-full">
+        <div className="bg-violet-900 p-1 rounded-3xl">
           <img
             src={accountData.profilePicture}
             alt=""
-            className="w-48 h-48 rounded-full p-1"
+            className="w-48 h-48 rounded-3xl p-1"
           />
         </div>
         <div className=" flex flex-grow flex-col justify-between items-center text-center p-2">
