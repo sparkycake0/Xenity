@@ -33,15 +33,15 @@ export default function ChatPage() {
       setUserId(user?.uid ?? "");
     });
 
-    const unsubscribe = onSnapshot(mssgRef, (snapshot) => {
-      const messages = snapshot.docs.map((doc) => ({
+    const unsubscribe = onSnapshot(mssgRef, async (snapshot) => {
+      const messages = await snapshot.docs.map((doc) => ({
         id: doc.data().id,
         text: doc.data().text,
         profilePic: doc.data().profilePic,
         timestamp: doc.data().timestamp.seconds,
       }));
-      messages.sort((a, b) => b.timestamp - a.timestamp);
-      setMssgs(messages);
+      await messages.sort((a, b) => b.timestamp - a.timestamp);
+      await setMssgs(messages);
     });
     scrollToBottom();
     return () => unsubscribe();

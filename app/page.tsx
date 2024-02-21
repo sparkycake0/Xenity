@@ -8,8 +8,10 @@ export default function Home() {
   const router = useRouter();
   const [user, setUser] = useState("");
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      setUser(user?.displayName ?? (user as any).reloadUserInfo.screenName);
+    onAuthStateChanged(auth, async (user) => {
+      await setUser(
+        user?.displayName ?? (user as any).reloadUserInfo.screenName,
+      );
       if (user) {
         console.log("Welcome");
       } else {

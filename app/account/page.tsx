@@ -13,11 +13,11 @@ export default function Home() {
   });
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
         const displayName =
           user?.displayName ?? (user as any).reloadUserInfo?.screenName;
-        setAccountData({
+        await setAccountData({
           displayName: displayName,
           profilePicture: user?.photoURL ?? "",
           email: user?.email ?? "",
