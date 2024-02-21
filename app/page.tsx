@@ -21,16 +21,8 @@ export default function Home() {
   }, []);
   return (
     <nav className="p-12 flex-grow flex items-center flex-col">
-      <div>
-        <h1>Hello {user}</h1>
-        <h1>Welcome to Socialize!</h1>
-      </div>
-      <div>
-        <h1>
-          You can go to chat icon in top right corner or use navigaton menu to
-          navigate around.
-        </h1>
-      </div>
+      <h1>Hello {user}</h1>
+      <h1>Welcome to our website</h1>
     </nav>
   );
 }

@@ -37,15 +37,22 @@ export default function AboutPage() {
           </h1>
           <p className="lg:text-2xl">
             We are duo web developers and this is one of our biggest projects,
-            social media called <span>Socialize</span>. We hope this will help a
-            lot of peoples with their social anxiety and help them socialize
-            among other peoples and get some friends from another part of
-            planet. Using our web development skills we are able to create place
-            where frendships are made and many of peoples will meet each others.
+            social media called <span className="font-bold">Xenity</span>. We
+            hope this will help a lot of peoples with their social anxiety and
+            help them socialize among other peoples and get some friends from
+            another part of planet. Using our web development skills we are able
+            to create place where frendships are made and many of peoples will
+            meet each others.
           </p>
           <h2 className="text-xl">
             If you are interested in checking out more about us and our work you
-            can check out our <Link href={"/"}>Portfolio Website</Link>
+            can check out our{" "}
+            <Link
+              href={"https://wecanhacknasa.vercel.app"}
+              className="font-bold"
+            >
+              Portfolio Website
+            </Link>
           </h2>
         </div>
         <div className="flex gap-6 flex-col text-center">
@@ -64,7 +71,7 @@ export default function AboutPage() {
               className="p-1 lg:scale-150 text-center hover:-translate-y-3 transition-transform duration-200 rounded-md w-max"
             >
               <Image src={telegram} alt="" width={40} />
-            </Link>{" "}
+            </Link>
             <Link
               href={"/"}
               className="p-1 lg:scale-150 text-center hover:-translate-y-3 transition-transform duration-200 rounded-md w-max"

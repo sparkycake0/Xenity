@@ -62,7 +62,7 @@ export default function ChatPage() {
   return (
     <main className="flex justify-between flex-col mt-6 pb-4 pl-4 pr-4 items-center flex-grow">
       <div className="font-bold text-2xl bg-neutral-800 w-full h-max text-center">
-        <h1 className="p-4 text-violet-400">Socialize - Live Chat</h1>
+        <h1 className="p-4 text-violet-400">Live Chat</h1>
       </div>
       <div
         className={`w-screen overflow-y-auto break-all h-full text-right transition-all duration-1000 delay-500 ${domLoad ? "opacity-100" : "opacity-0"} p-2 mb-4 flex flex-col-reverse`}

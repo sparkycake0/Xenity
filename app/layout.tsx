@@ -5,7 +5,7 @@ import { LayoutProps } from "@/.next/types/app/layout";
 
 const font = Nunito_Sans({ subsets: ["latin"] });
 export const metadata = {
-  title: "Socialize - Chat App",
+  title: "Xenity - Chat App",
   description: "Created in order to get you friends. Made by WeCanHackNasa.",
 };
 
