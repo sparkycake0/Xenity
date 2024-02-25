@@ -2,9 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply bg-neutral-900 text-white overflow-x-hidden;
-}
 * {
   scrollbar-width: none;
 }
