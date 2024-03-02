@@ -1,21 +1,18 @@
-"use client";
-import { auth } from "./lib/firebase";
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import { onAuthStateChanged } from "firebase/auth";
-
+import Link from "next/link";
 export default function Home() {
-  const router = useRouter();
-  const [user, setUser] = useState("");
-  useEffect(() => {
-    onAuthStateChanged(auth, async (user) => {
-      setUser(user?.displayName ?? (user as any).reloadUserInfo.screenName);
-      if (user) {
-        console.log("Welcome");
-      } else {
-        router.push("/account/register");
-      }
-    });
-  }, []);
-  return <div>Hello</div>;
+  return (
+    <main className="border-2 flex flex-grow flex-col items-center p-4">
+      <div>Still in development.</div>
+      <div>
+        On this website you can check{" "}
+        <Link href={"/chat"} className="text-violet-400 font-bold">
+          Live Chat
+        </Link>{" "}
+        or check you account information on{" "}
+        <Link href={"/account"} className="text-violet-400 font-bold">
+          Account Page.
+        </Link>
+      </div>
+    </main>
+  );
 }

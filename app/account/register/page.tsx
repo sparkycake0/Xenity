@@ -5,19 +5,27 @@ import github from "./assets/github (1).svg";
 import facebook from "./assets/facebook (1).svg";
 import { Button, Input } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
-import { signInWithPopup } from "@firebase/auth";
+import { signInWithPopup, onAuthStateChanged } from "@firebase/auth";
 import {
   auth,
   googleProvider,
   githubProvider,
   facebookProvider,
 } from "../../lib/firebase";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function RegisterPage() {
   const router = useRouter();
   const [toggle, setToggle] = useState(false);
-
+  useEffect(() => {
+    onAuthStateChanged(auth, async (user) => {
+      if (user?.uid) {
+        router.push("/");
+      } else {
+        console.log("Welcome");
+      }
+    });
+  }, []);
   const handleRegisterWithGoogle = async () => {
     try {
       await signInWithPopup(auth, googleProvider);
@@ -44,28 +52,30 @@ export default function RegisterPage() {
   };
   return (
     <main className="absolute top-0 w-screen h-screen z-50 bg-neutral-900 flex flex-col items-center p-4">
-      <h1 className="font-bold text-lg">xenity</h1>
+      <h1 className="font-bold text-lg text-violet-400">xenity</h1>
       <div className="m-4 bg-neutral-800 rounded-lg relative flex flex-col items-center justify-between p-4 flex-grow">
         <div className="w-full my-12">
-          <h1 className="text-4xl font-extrabold text-center">Sign up</h1>
-          <div className="my-8 w-full flex flex-col items-center justify-center p-2">
-            <h1 className="font-bold text-lg">
+          <h1 className="text-4xl font-extrabold text-center">
+            {toggle ? "Sign Up" : "Sign In"}
+          </h1>
+          <div className="my-8 w-full flex flex-col items-center justify-center">
+            <h1 className="font-bold text-lg ">
               or continue using social medias
             </h1>
             <div className="flex gap-4 p-2">
               <Button
-                className="!px-2 gap-4 !bg-white !text-black"
+                className="!px-2 !w-max gap-4 !bg-white !text-black"
                 display="flex"
                 alignItems="center"
                 justifyContent="space-between"
                 onClick={handleRegisterWithGoogle}
               >
                 <Image src={google} width={24} alt="facebook"></Image>
-                <h1>Google</h1>
+                Google
               </Button>
               <Button
                 colorScheme="facebook"
-                className="!px-2 gap-4"
+                className="!px-2 !w-max gap-4"
                 display="flex"
                 alignItems="center"
                 justifyContent="space-between"
@@ -75,7 +85,7 @@ export default function RegisterPage() {
                 <h1>Facebook</h1>
               </Button>
               <Button
-                className="!px-2 gap-4 !bg-black !text-white"
+                className="!px-2 gap-4 !w-max !bg-black !text-white"
                 display="flex"
                 alignItems="center"
                 justifyContent="space-between"
