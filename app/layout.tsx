@@ -18,7 +18,9 @@ export default function RootLayout({ children }: LayoutProps) {
       >
         <Providers>
           <Navbar />
-          {children}
+          <div className="flex flex-col flex-grow lg:ml-32 mt-10 lg:mt-0 ">
+            {children}
+          </div>
         </Providers>
       </body>
     </html>

@@ -53,7 +53,7 @@ export default function Home() {
           <h1 className="font-bold text-xl">{accountData.email}</h1>
         </div>
       </div>
-      <Button colorScheme="red" onClick={handleSignOut}>
+      <Button colorScheme="red" className="!scale-150" onClick={handleSignOut}>
         Sign Out
       </Button>
     </main>

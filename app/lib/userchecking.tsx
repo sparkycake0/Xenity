@@ -9,7 +9,7 @@ export default function UserCheck({ children }: { children: React.ReactNode }) {
     if (path !== "/account/register") {
       onAuthStateChanged(auth, async (user) => {
         if (user?.uid) {
-          console.log("OK");
+          return {};
         } else {
           router.push("/account/register");
         }

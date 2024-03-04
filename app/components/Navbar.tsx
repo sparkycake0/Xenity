@@ -23,7 +23,7 @@ export default function Navbar() {
     pathname === "/chat" ? setChatFilled(true) : setChatFilled(false);
   }, [pathname]);
   return (
-    <nav className="z-40 w-screen lg:w-max h-max lg:h-screen relative flex lg:flex-col justify-between p-1 lg:p-2 lg:py-4 items-center bg-neutral-800">
+    <nav className="z-40 w-screen lg:w-max h-max lg:h-screen fixed flex lg:flex-col justify-between p-1 lg:p-2 lg:py-4 items-center bg-neutral-800">
       <div className="flex lg:hidden gap-4 lg:gap-10">
         <Link href={"/"}>
           <Button colorScheme="purple">
@@ -37,7 +37,7 @@ export default function Navbar() {
           </Button>
         </Link>
       </div>
-      <div className="hidden lg:flex lg:flex-col gap-4 lg:gap-10">
+      <div className="hidden lg:flex lg:flex-col gap-4 lg:gap-6">
         <Link href={"/"}>
           <Button colorScheme="purple" className="flex w-full justify-between">
             <Image src={homeFilled ? homeimgFilled : home} alt="" />{" "}

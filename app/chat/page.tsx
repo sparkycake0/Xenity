@@ -11,7 +11,7 @@ export default function ChatPage() {
     text: string;
     profilePic: string;
     id: string;
-    timestamp: number;
+    sequenceNumber: any;
   }
 
   const [text, setText] = useState("");
@@ -25,25 +25,35 @@ export default function ChatPage() {
       behavior: "smooth",
     });
   };
-
-  useEffect(() => {
+  const getMessages = async () => {
     onAuthStateChanged(auth, (user) => {
       setPfp(user?.photoURL ?? "");
       setUserId(user?.uid ?? "");
     });
-
     const unsubscribe = onSnapshot(mssgRef, async (snapshot) => {
-      const messages = snapshot.docs.map((doc) => ({
-        id: doc.data().id,
-        text: doc.data().text,
-        profilePic: doc.data().profilePic,
-        timestamp: doc.data().timestamp.seconds,
-      }));
-      messages.sort((a, b) => b.timestamp - a.timestamp);
+      const messages = snapshot.docs.map((doc) => {
+        try {
+          return {
+            id: doc.data().id,
+            text: doc.data().text,
+            profilePic: doc.data().profilePic,
+            sequenceNumber: doc.data().sequenceNumber,
+          };
+        } catch (error) {
+          return {};
+        }
+      }) as Message[];
+
+      messages.sort((a, b) => a.sequenceNumber - b.sequenceNumber);
       setMssgs(messages);
+
+      scrollToBottom();
     });
-    scrollToBottom();
-    return () => unsubscribe();
+
+    return unsubscribe;
+  };
+  useEffect(() => {
+    getMessages();
   }, []);
   useEffect(() => {
     scrollToBottom();
@@ -54,7 +64,7 @@ export default function ChatPage() {
       text: text,
       profilePic: pfp,
       id: userId,
-      timestamp,
+      sequenceNumber: timestamp,
     });
     setText("");
     scrollToBottom();
@@ -72,7 +82,7 @@ export default function ChatPage() {
         {mssgs.map((message, index) => (
           <div
             key={`${message.id}-${index}`}
-            className={`${message.id === auth?.currentUser?.uid ? "self-end bg-neutral-700" : " self-start flex-row-reverse bg-neutral-800"} flex mt-3 self-start max-w-11/12 p-1 rounded-md h-max items-center justify-between text-justify`}
+            className={`${message.id === auth?.currentUser?.uid ? "self-end bg-neutral-700" : " self-start flex-row-reverse bg-neutral-800"} flex mt-3 self-start max-w-10/12 p-1 rounded-md h-max items-center justify-between text-justify`}
           >
             <p className="m-2">{message.text}</p>
             <img
@@ -83,16 +93,16 @@ export default function ChatPage() {
           </div>
         ))}
       </div>
-      <div className="relative w-full flex h-12 items-center">
+      <div className="relative  mt-10 w-full flex flex-row-reverse !items-center mb-2">
         <Button
-          className="!absolute !flex right-1 top-1 z-10 select-none rounded py-2 px-4 text-center align-middle !text-xl"
+          className=" !h-max !flex right-2 top-0 z-10 select-none rounded py-2 px-4 text-center align-middle !text-xl"
           type="submit"
           colorScheme="purple"
         >
           <ChevronRightIcon />
         </Button>
         <Input
-          className="!h-full !border-2 !border-violet-400 !focus:border-violet-400"
+          className="!absolute w-full !h-12 !border-1 !transition-all !duration-200 !border-violet-400  !focus:border-violet-400"
           focusBorderColor="#a78bfa"
           placeholder="Enter your message..."
           required
