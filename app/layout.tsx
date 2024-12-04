@@ -16,11 +16,10 @@ export default function RootLayout({ children }: LayoutProps) {
       <body
         className={`${font.className} flex flex-col lg:flex-row h-screen bg-neutral-900 text-white overflow-x-hidden`}
       >
-          <Navbar />
+        <Navbar />
           <div className="flex flex-col flex-grow lg:ml-32 mt-10 lg:mt-0 ">
             {children}
           </div>
-        
       </body>
     </html>
   );
