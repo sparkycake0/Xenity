@@ -1,4 +1,4 @@
-import { Nunito_Sans } from "next/font/google";
+8import { Nunito_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import { LayoutProps } from "@/.next/types/app/layout";
@@ -20,7 +20,7 @@ export default function RootLayout({ children }: LayoutProps) {
           <div className="flex flex-col flex-grow lg:ml-32 mt-10 lg:mt-0 ">
             {children}
           </div>
-        </Providers>
+        
       </body>
     </html>
   );
