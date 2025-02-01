@@ -22,7 +22,6 @@ export default function RootLayout({ children }: LayoutProps) {
         <Navbar />
 
         <div className="flex flex-col flex-grow lg:ml-32 mt-10 lg:mt-0 ">
-          {children}
           <UserCheck children={children} />
         </div>
       </body>
