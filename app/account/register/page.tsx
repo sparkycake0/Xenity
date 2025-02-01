@@ -51,7 +51,7 @@ export default function RegisterPage() {
     }
   };
   return (
-    <main className="absolute top-0 w-screen h-screen z-50 bg-neutral-900 flex flex-col items-center p-4">
+    <main className="absolute top-0 w-max self-center h-screen z-50 bg-neutral-900 flex flex-col items-center p-4">
       <h1 className="font-bold text-lg text-violet-400">xenity</h1>
       <div className="m-4 bg-neutral-800 rounded-lg relative flex flex-col items-center justify-between p-4 flex-grow">
         <div className="w-full my-12">
@@ -63,37 +63,27 @@ export default function RegisterPage() {
               or continue using social medias
             </h1>
             <div className="flex gap-4 p-2">
-              <Button
-                className="!px-2 !w-max gap-4 !bg-white !text-black"
-                display="flex"
-                alignItems="center"
-                justifyContent="space-between"
+              <button
+                className=" flex p-1.5 rounded-md items-center justify-between w-max gap-4 bg-white text-black"
                 onClick={handleRegisterWithGoogle}
               >
                 <Image src={google} width={24} alt="facebook"></Image>
                 Google
-              </Button>
-              <Button
-                colorScheme="facebook"
-                className="!px-2 !w-max gap-4"
-                display="flex"
-                alignItems="center"
-                justifyContent="space-between"
+              </button>
+              <button
+                className="p-1.5 w-max gap-4 flex bg-blue-500 text-white font-bold items-center justify-between rounded-md"
                 onClick={handleRegisterWithFacebook}
               >
                 <Image src={facebook} width={24} alt="facebook"></Image>
                 <h1>Facebook</h1>
-              </Button>
-              <Button
-                className="!px-2 gap-4 !w-max !bg-black !text-white"
-                display="flex"
-                alignItems="center"
-                justifyContent="space-between"
+              </button>
+              <button
+                className="p-1.5 flex items-center justify-between gap-4 w-max bg-black rounded-md text-white"
                 onClick={handleRegisterWithGithub}
               >
                 <Image src={github} width={24} alt="facebook"></Image>
                 <h1>Github</h1>
-              </Button>
+              </button>
             </div>
           </div>
         </div>
@@ -101,50 +91,74 @@ export default function RegisterPage() {
           className={`h-full w-full p-4 flex flex-col gap-10 ${toggle ? "hidden" : ""}`}
         >
           <div className="flex flex-col gap-4">
-            <Input focusBorderColor="#8b5cf6" placeholder="Email"></Input>
-            <Input focusBorderColor="#8b5cf6" placeholder="Password"></Input>
+            <input
+              className="p-2 bg-neutral-700 border-purple-500 border-2 focus:border-purple-700 transition-all duration-150 outline-none"
+              placeholder="Email"
+            ></input>
+            <input
+              className="p-2 bg-neutral-700 border-purple-500 border-2 focus:border-purple-700 transition-all duration-150 outline-none"
+              placeholder="Password"
+            ></input>
           </div>
-          <div className="w-full flex flex-col gap-4">
-            <Button colorScheme="purple" type="submit">
+          <div className="w-full flex flex-col gap-4 items-center">
+            <button
+              className="p-2 text-xl font-bold text-black bg-purple-600 rounded-md hover:bg-purple-800 w-4/6 transition-all duration-150"
+              type="submit"
+            >
               Sign In
-            </Button>
-            <Button
-              variant="link"
-              onClick={() => {
+            </button>
+            <button
+              onClick={(e) => {
+                e.preventDefault();
                 setToggle(!toggle);
               }}
-              className="!text-white"
+              className="!text-white hover:opacity-75 transition-all duration-150"
             >
               you still dont have account?
-            </Button>
+            </button>
           </div>
         </form>
         <form
           className={`h-full w-full p-4 flex flex-col gap-10 ${toggle ? "" : "hidden"}`}
         >
-          <div className="flex flex-col gap-4">
-            <div className="flex gap-2">
-              <Input focusBorderColor="#8b5cf6" placeholder="Fullname"></Input>
-              <Input focusBorderColor="#8b5cf6" placeholder="Username"></Input>
+          <div className="flex flex-col items-center gap-2">
+            <div className="flex gap-2 w-4/5 justify-center">
+              <input
+                className="p-2 w-full bg-neutral-700 border-purple-500 border-2 focus:border-purple-700 transition-all duration-150 outline-none"
+                placeholder="Fullname"
+              ></input>
+              <input
+                className="p-2 w-full bg-neutral-700 border-purple-500 border-2 focus:border-purple-700 transition-all duration-150 outline-none"
+                placeholder="Username"
+              ></input>
             </div>
-            <Input focusBorderColor="#8b5cf6" placeholder="Email"></Input>
-            <div>
-              <Input focusBorderColor="#8b5cf6" placeholder="Password"></Input>
+            <div className="flex flex-col w-4/5 gap-2">
+              <input
+                className="p-2 w-full bg-neutral-700 border-purple-500 border-2 focus:border-purple-700 transition-all duration-150 outline-none"
+                placeholder="Email"
+              ></input>
+
+              <input
+                className="p-2 w-full bg-neutral-700 border-purple-500 border-2 focus:border-purple-700 transition-all duration-150 outline-none"
+                placeholder="Password"
+              ></input>
             </div>
           </div>
-          <div className="w-full flex flex-col gap-4">
-            <Button colorScheme="purple" type="submit">
+          <div className="w-full items-center flex flex-col gap-4">
+            <button
+              className="p-2 text-xl font-bold text-black bg-purple-600 rounded-md hover:bg-purple-800 w-4/6 transition-all duration-150"
+              type="submit"
+            >
               Sign Up
-            </Button>
-            <Button
-              variant="link"
+            </button>
+            <button
               onClick={() => {
                 setToggle(!toggle);
               }}
               className="!text-white"
             >
               you already have account?
-            </Button>
+            </button>
           </div>
         </form>
         <div className="select-none opacity-0">asdasd</div>

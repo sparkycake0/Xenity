@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "./components/Navbar";
 import { LayoutProps } from "@/.next/types/app/layout";
 import { Providers } from "./chakra/providers";
+import UserCheck from "./lib/userchecking";
 
 const font = Nunito_Sans({ subsets: ["latin"] });
 export const metadata = {
@@ -17,9 +18,11 @@ export default function RootLayout({ children }: LayoutProps) {
         className={`${font.className} flex flex-col lg:flex-row h-screen bg-neutral-900 text-white overflow-x-hidden`}
       >
         <Navbar />
-          <div className="flex flex-col flex-grow lg:ml-32 mt-10 lg:mt-0 ">
-            {children}
-          </div>
+
+        <div className="flex flex-col flex-grow lg:ml-32 mt-10 lg:mt-0 ">
+          {children}
+          <UserCheck />
+        </div>
       </body>
     </html>
   );

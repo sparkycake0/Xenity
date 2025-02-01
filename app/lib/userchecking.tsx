@@ -1,3 +1,4 @@
+"use client";
 import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { useRouter, usePathname } from "next/navigation";
@@ -9,7 +10,7 @@ export default function UserCheck({ children }: { children: React.ReactNode }) {
     if (path !== "/account/register") {
       onAuthStateChanged(auth, async (user) => {
         if (user?.uid) {
-          return {};
+          return { children };
         } else {
           router.push("/account/register");
         }

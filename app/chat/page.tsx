@@ -84,7 +84,9 @@ export default function ChatPage() {
             key={`${message.id}-${index}`}
             className={`${message.id === auth?.currentUser?.uid ? "self-end bg-neutral-700" : " self-start flex-row-reverse bg-neutral-800"} flex mt-3 self-start max-w-10/12 p-1 rounded-md h-max items-center justify-between text-justify`}
           >
-            <p className="m-2">{message.text}</p>
+            <p className="my-4 mx-2 max-w-sm text-wrap word-wrap break-all">
+              {message.text}
+            </p>
             <img
               src={message.profilePic}
               alt=""
@@ -93,17 +95,15 @@ export default function ChatPage() {
           </div>
         ))}
       </div>
-      <div className="relative  mt-10 w-full flex flex-row-reverse !items-center mb-2">
-        <Button
-          className=" !h-max !flex right-2 top-0 z-10 select-none rounded py-2 px-4 text-center align-middle !text-xl"
+      <div className="relative mt-10 w-full flex flex-row-reverse !items-center mb-8">
+        <button
+          className="absolute -translate-y-1/2 h-max flex right-2 top-1/2 z-10 select-none rounded p-2 text-center align-middle bg-purple-700 text-xl"
           type="submit"
-          colorScheme="purple"
         >
           <ChevronRightIcon />
-        </Button>
-        <Input
-          className="!absolute w-full !h-12 !border-1 !transition-all !duration-200 !border-violet-400  !focus:border-violet-400"
-          focusBorderColor="#a78bfa"
+        </button>
+        <input
+          className="!absolute w-full bg-neutral-700 p-2 h-12 border-2 outline-none rounded-md transition-all duration-200 border-violet-400  focus:border-violet-700"
           placeholder="Enter your message..."
           required
           onChange={(e) => {
